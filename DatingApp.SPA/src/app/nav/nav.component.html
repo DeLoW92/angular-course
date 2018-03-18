@@ -1,0 +1,44 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">Dating App</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+
+    
+    <ul class="navbar-nav mr-auto">
+      <!--  Aqui puedes poner la etiqueta active para marcarlo por defecto -->
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Matches <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">List</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Messages</a>
+      </li>
+      
+     </ul>
+
+     <div *ngIf="loggedIn()" class="dropdown">
+     <button (click)="logout()" type="button" class="btn btn-danger"> Log Out </button>
+     <!-- ojo con el click que si no es en minuscuilas no funciona... -->
+        <button class="btn dropdown-toggle btn-warning" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+         Welcome User
+        </button>
+       
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item" href="#"><i class="fa fa-user"></i>Edit Profile</a><
+         <a (click)="logout()" class="dropdown-item" href="#"><i class="fa fa-sign-out"></i>Logout</a>
+        </div>
+   </div>
+    <form #loginForm="ngForm" *ngIf="!loggedIn()" class="form-inline my-2 my-lg-0" (ngSubmit)="login()">
+      <input class="form-control mr-sm-2" #username="ngModel" type="text" placeholder="User" aria-label="Login" required name="username" [(ngModel)]="model.username">
+      <input class="form-control mr-sm-2" #password="ngModel" type="password" placeholder="Password" aria-label="Search" required name="password" [(ngModel)]="model.password">
+      <button class="btn btn-outline-primary my-2 my-sm-0" [disabled]="!loginForm.valid" type="submit">Login</button>
+    </form>
+
+    
+  </div>
+</nav>
