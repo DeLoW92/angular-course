@@ -23,7 +23,7 @@ register() {
     console.log(error);
   });
 }
-// hola
+
 cancel() {
   console.log('cancelled');
 }
